@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "TestView.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clickBtn;
@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    TestView *testView = [[TestView alloc] initWithFrame:CGRectMake(0, 100, 400, 400)];
+    [self.view addSubview:testView];
+   
 }
 - (IBAction)click:(id)sender {
 
