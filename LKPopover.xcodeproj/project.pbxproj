@@ -17,6 +17,7 @@
 		4ADD5F581CAA693300053AD3 /* LKPopoverUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F571CAA693300053AD3 /* LKPopoverUITests.m */; };
 		4ADD5F671CAA916D00053AD3 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F661CAA916D00053AD3 /* TestView.m */; };
 		4ADD5F6A1CABAD2D00053AD3 /* DXPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F691CABAD2D00053AD3 /* DXPopover.m */; };
+		4ADD5F6E1CABBF3100053AD3 /* LKPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F6D1CABBF3100053AD3 /* LKPopover.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		4ADD5F661CAA916D00053AD3 /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		4ADD5F681CABAD2D00053AD3 /* DXPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXPopover.h; sourceTree = "<group>"; };
 		4ADD5F691CABAD2D00053AD3 /* DXPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXPopover.m; sourceTree = "<group>"; };
+		4ADD5F6C1CABBF3100053AD3 /* LKPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPopover.h; sourceTree = "<group>"; };
+		4ADD5F6D1CABBF3100053AD3 /* LKPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPopover.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 		4ADD5F311CAA693300053AD3 /* LKPopover */ = {
 			isa = PBXGroup;
 			children = (
+				4ADD5F6B1CABBEEF00053AD3 /* LKPopover */,
 				4ADD5F681CABAD2D00053AD3 /* DXPopover.h */,
 				4ADD5F691CABAD2D00053AD3 /* DXPopover.m */,
 				4ADD5F351CAA693300053AD3 /* AppDelegate.h */,
@@ -148,6 +152,15 @@
 				4ADD5F591CAA693300053AD3 /* Info.plist */,
 			);
 			path = LKPopoverUITests;
+			sourceTree = "<group>";
+		};
+		4ADD5F6B1CABBEEF00053AD3 /* LKPopover */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD5F6C1CABBF3100053AD3 /* LKPopover.h */,
+				4ADD5F6D1CABBF3100053AD3 /* LKPopover.m */,
+			);
+			path = LKPopover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +295,7 @@
 			files = (
 				4ADD5F671CAA916D00053AD3 /* TestView.m in Sources */,
 				4ADD5F3A1CAA693300053AD3 /* ViewController.m in Sources */,
+				4ADD5F6E1CABBF3100053AD3 /* LKPopover.m in Sources */,
 				4ADD5F6A1CABAD2D00053AD3 /* DXPopover.m in Sources */,
 				4ADD5F371CAA693300053AD3 /* AppDelegate.m in Sources */,
 				4ADD5F341CAA693300053AD3 /* main.m in Sources */,
