@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, DXPopoverPosition) {
 };
 
 typedef NS_ENUM(NSUInteger, DXPopoverMaskType) {
-    DXPopoverMaskTypeBlack,
+    DXPopoverMaskTypeBlack, //默认
     DXPopoverMaskTypeNone,  // overlay does not respond to touch
 };
 

@@ -13,6 +13,7 @@
  *  提示窗背景颜色包括箭头
  */
 @property (nonatomic, strong) UIColor *contentColor;
+@property (nonatomic, assign, readwrite) CGFloat cornerRadius;
 
 @end
 
@@ -48,7 +49,15 @@
 }
 
 - (void)propertyInit{
-    
+    self.arrowSize = CGSizeMake(10, 10);
+    self.animationShow = 0.5f;
+    self.animationDismss = 0.5f;
+    self.betweenAtViewAndArrowHeight = 3.0f;
+    self.sideEdge = 4.0f;
+    self.cornerRadius = 6.0f;
+    self.animationSpring = YES;
+    self.maskType = LKPopoverMaskTypeGray;
+    self.applyShadow = YES;
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor{
@@ -56,4 +65,6 @@
     [super setBackgroundColor:[UIColor clearColor]];
     self.contentColor = backgroundColor;
 }
+
+
 @end

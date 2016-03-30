@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TestView.h"
+#import "LKPopover.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clickBtn;
@@ -22,6 +23,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     TestView *testView = [[TestView alloc] initWithFrame:CGRectMake(0, 100, 300, 300)];
     [self.view addSubview:testView];
+    
+    
+    
+    LKPopover *lk = [LKPopover new];
+    NSLog(@"!!!!!%f",lk.cornerRadius);
+    
    
 }
 - (IBAction)click:(id)sender {

@@ -29,13 +29,13 @@ typedef void(^animationBlock)(void);
  */
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 /**
- *  提示窗箭头尺寸 {10，10},
+ *  提示窗箭头尺寸 默认{10，10},
  */
 @property (nonatomic, assign) CGSize arrowSize;
 /**
- *  边角弧度 默认5.0f
+ *  边角弧度 默认6.0f
  */
-@property (nonatomic, assign) CGFloat cornerRadius;
+@property (nonatomic, assign, readonly) CGFloat cornerRadius;
 /**
  *  点击提示窗动画持续时间 默认0.5f
  */
@@ -45,9 +45,21 @@ typedef void(^animationBlock)(void);
  */
 @property (nonatomic, assign) CGFloat animationDismss;
 /**
+ *  用来控制具体屏幕边缘距离 默认4.0f
+ */
+@property (nonatomic, assign) CGFloat sideEdge;
+/**
  *  开启spring动画效果 默认是开启的
  */
 @property (nonatomic, assign, getter = isAnimationSpring) BOOL animationSpring;
+/**
+ *  提示窗的阴影效果是用它来控制的 默认是开启的 你可以自己去设置它
+ */
+@property (nonatomic, assign, getter=isApplyShadow) BOOL applyShadow;
+/**
+ *  这个是用来控制填出提示窗触发视图与提示窗箭头的距离 默认是3.0
+ */
+@property (nonatomic, assign) CGFloat betweenAtViewAndArrowHeight;
 /**
  *  回调 处理提示窗弹出后事务处理
  */
@@ -64,5 +76,9 @@ typedef void(^animationBlock)(void);
  *  箭头在需要提示窗的位置
  */
 @property (nonatomic, assign) LKPopoverPositionType positionType;
+/**
+ * 提示窗下面的半透明灰色遮罩。 如果你需要它,touch它提示窗就会消失,否则他event(userInterfaceEnabled)就会No
+ */
+@property (nonatomic, strong, readonly) UIControl *grayOverlay;
 
 @end
