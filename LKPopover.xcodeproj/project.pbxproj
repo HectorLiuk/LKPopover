@@ -16,6 +16,7 @@
 		4ADD5F4D1CAA693300053AD3 /* LKPopoverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F4C1CAA693300053AD3 /* LKPopoverTests.m */; };
 		4ADD5F581CAA693300053AD3 /* LKPopoverUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F571CAA693300053AD3 /* LKPopoverUITests.m */; };
 		4ADD5F671CAA916D00053AD3 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F661CAA916D00053AD3 /* TestView.m */; };
+		4ADD5F6A1CABAD2D00053AD3 /* DXPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD5F691CABAD2D00053AD3 /* DXPopover.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		4ADD5F591CAA693300053AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ADD5F651CAA916D00053AD3 /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
 		4ADD5F661CAA916D00053AD3 /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
+		4ADD5F681CABAD2D00053AD3 /* DXPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXPopover.h; sourceTree = "<group>"; };
+		4ADD5F691CABAD2D00053AD3 /* DXPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXPopover.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		4ADD5F311CAA693300053AD3 /* LKPopover */ = {
 			isa = PBXGroup;
 			children = (
+				4ADD5F681CABAD2D00053AD3 /* DXPopover.h */,
+				4ADD5F691CABAD2D00053AD3 /* DXPopover.m */,
 				4ADD5F351CAA693300053AD3 /* AppDelegate.h */,
 				4ADD5F361CAA693300053AD3 /* AppDelegate.m */,
 				4ADD5F381CAA693300053AD3 /* ViewController.h */,
@@ -277,6 +282,7 @@
 			files = (
 				4ADD5F671CAA916D00053AD3 /* TestView.m in Sources */,
 				4ADD5F3A1CAA693300053AD3 /* ViewController.m in Sources */,
+				4ADD5F6A1CABAD2D00053AD3 /* DXPopover.m in Sources */,
 				4ADD5F371CAA693300053AD3 /* AppDelegate.m in Sources */,
 				4ADD5F341CAA693300053AD3 /* main.m in Sources */,
 			);

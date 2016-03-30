@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    TestView *testView = [[TestView alloc] initWithFrame:CGRectMake(0, 100, 400, 400)];
+    TestView *testView = [[TestView alloc] initWithFrame:CGRectMake(0, 100, 300, 300)];
     [self.view addSubview:testView];
    
 }
