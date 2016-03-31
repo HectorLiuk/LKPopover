@@ -54,6 +54,22 @@ UIView* MBNoResultView(id target,SEL action,UIView *view){
     
     NSLog(@"@@@@@%d",self.sBolck(5,7));
 }
+
+
+- (void)setSBolck:(ssBlock)sBolck{
+    _sBolck = sBolck;
+    
+    NSLog(@"####%d",self.sBolck(7,7));
+
+    
+    NSLog(@"set==%@",sBolck);
+}
+
+- (void)setStr:(NSString *)str{
+    _str = str;
+    
+    
+}
 /**
  *
  Core Graphics

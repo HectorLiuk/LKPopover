@@ -15,8 +15,7 @@ typedef int(^ssBlock)(int w, int s);
 
 @property (nonatomic, copy) valueBlock vBlock;
 @property (nonatomic, copy) ssBlock sBolck;
-
-
+@property (nonatomic, copy) NSString *str;
 UIView* MBNoResultView(id target,SEL action,UIView *view);
 - (void)blockSting:(void (^)(NSString *str))block;
 - (void)blockReturn:(int (^)(int i,int j))block;

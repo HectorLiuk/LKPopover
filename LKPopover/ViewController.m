@@ -56,6 +56,8 @@
         return w+j;
     };
     
+    [testView setStr:@"ss"];
+    
     
 //    int i =  testView.sBolck;
     
