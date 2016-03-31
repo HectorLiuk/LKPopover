@@ -20,16 +20,39 @@ UIView* MBNoResultView(id target,SEL action,UIView *view){
     return view;
 }
 
-void mo(NSString *str){
-    
+
+- (void)blockSting:(void (^)(NSString *str))block{
+    block(@"sssssssss");
+}
+
+
+- (void)blockReturn:(int (^)(int i,int j))block{
+    block(2,4);
 }
 
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor cyanColor];
+//         [self blockReturn:^int(int i, int j) {
+//             
+//        }];
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        btn.frame = CGRectMake(40, 20, 30, 30);
+        [btn addTarget:self action:@selector(www) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:btn];
+        
+        
     }
     return self;
+}
+- (void)www{
+    if (self.vBlock) {
+        self.vBlock();
+    }
+    
+    NSLog(@"@@@@@%d",self.sBolck(5,7));
 }
 /**
  *
@@ -165,6 +188,12 @@ void mo(NSString *str){
     layer.position = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
     layer.backgroundColor = [UIColor lightGrayColor].CGColor;
     [self.layer addSublayer:layer];
+    
+//    if (self.vBlock) {
+//        self.vBlock(3);
+//    }
+    
+//   int i = self.sBolck(4,5);
     
     
 }

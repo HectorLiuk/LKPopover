@@ -25,6 +25,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     TestView *testView = [[TestView alloc] initWithFrame:CGRectMake(0, 100, 300, 300)];
+    [testView blockSting:^(NSString *str) {
+        NSLog(@"%@",str);
+    }];
+    
+    [testView blockReturn:^int(int i, int j) {
+        int w;
+        w = i +j;
+        
+        return YES;
+    }];
+    
+    
+    [testView setVBlock:^(int w){
+        NSLog(@"~~~~~%d",w);
+    }];
+    
+    //把代码放到另外一个页面执行
+     testView.vBlock = ^{
+         int w ,i;
+         w = 0;
+         i = 10;
+         w = i + w;
+         NSLog(@"^^^^^^%d",w);
+    };
+    
+    //又返回值得block
+    testView.sBolck = ^(int w, int j){
+    
+        return w+j;
+    };
+    
+    
+//    int i =  testView.sBolck;
+    
+//    [testView setSBolck:^(int w ,int i){
+//        return YES;
+//    }];
+    
+    
     [self.view addSubview:testView];
     
     
