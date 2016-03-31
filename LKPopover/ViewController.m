@@ -10,6 +10,9 @@
 #import "TestView.h"
 #import "LKPopover.h"
 @interface ViewController ()
+{
+    UIView *_ccView;
+}
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clickBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -29,7 +32,26 @@
     LKPopover *lk = [LKPopover new];
     NSLog(@"!!!!!%f",lk.cornerRadius);
     
+    
+    
+    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 100, 100)];
+    cView.backgroundColor = [UIColor redColor];
+    
+    if (_ccView) {
+        
+    }
+    
+    
+    _ccView = MBNoResultView(self, @selector(cc), cView);
+    [self.view addSubview:cView];
+    if (!_ccView) {
+        
+    }
+    
    
+}
+- (void)cc{
+    
 }
 - (IBAction)click:(id)sender {
 

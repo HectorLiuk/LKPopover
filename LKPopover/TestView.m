@@ -10,6 +10,21 @@
 
 @implementation TestView
 
+UIView* MBNoResultView(id target,SEL action,UIView *view){
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    btn.frame = CGRectMake(20, 20, 30, 30);
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:btn];
+    
+    return view;
+}
+
+void mo(NSString *str){
+    
+}
+
+
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor cyanColor];

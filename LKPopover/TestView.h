@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TestView : UIView
-
+UIView* MBNoResultView(id target,SEL action,UIView *view);
 @end
