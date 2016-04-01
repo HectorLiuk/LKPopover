@@ -1,10 +1,9 @@
 //
 //  DXPopover.h
 //
-//  Created by xiekw on 11/14/14.
-//  Copyright (c) 2014 xiekw. All rights reserved.
+//  Created by lk on 16/3/29.
+//  Copyright © 2016年 LK. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, DXPopoverPosition) {
