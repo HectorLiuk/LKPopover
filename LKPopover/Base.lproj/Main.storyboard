@@ -16,42 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DE3-Uk-jX5">
-                                <rect key="frame" x="261" y="100" width="78" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="78" id="Rsf-FH-gsX"/>
-                                    <constraint firstAttribute="height" constant="42" id="fvE-3L-Qkl"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZm-ad-IyA"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-5j-qoP">
-                                <rect key="frame" x="0.0" y="28" width="89" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="qaQ-9m-8eo"/>
-                                    <constraint firstAttribute="width" constant="89" id="sbU-Pc-WKY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="DE3-Uk-jX5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="JTj-r1-air"/>
-                            <constraint firstItem="fQ4-5j-qoP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ivG-pR-4HQ"/>
-                            <constraint firstItem="fQ4-5j-qoP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mwr-9Y-9tT"/>
-                            <constraint firstItem="DE3-Uk-jX5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yN7-YT-kSE"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="clickBtn" destination="DE3-Uk-jX5" id="z5k-mh-pNS"/>
-                        <outlet property="numLabel" destination="fQ4-5j-qoP" id="7jd-3u-0UQ"/>
-                        <outlet property="top" destination="ivG-pR-4HQ" id="otT-27-vRT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

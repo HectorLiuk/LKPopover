@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, LKPopoverPositionType) {
 };
 typedef NS_ENUM(NSUInteger, LKPopoverMaskType) {
     LKPopoverMaskTypeGray = 1,//有蒙版效果,支持touch视图消失
-    LKPopoverMaskTypeNone,//没有蒙版效果
+    LKPopoverMaskTypeNone,//没有蒙版效果,不支持点击消失
 };
 typedef void(^animationBlock)(void);
 
@@ -35,7 +35,7 @@ typedef void(^animationBlock)(void);
 /**
  *  边角弧度 默认6.0f
  */
-@property (nonatomic, assign, readonly) CGFloat cornerRadius;
+@property (nonatomic, assign,) CGFloat cornerRadius;
 /**
  *  点击提示窗动画持续时间 默认0.5f
  */
@@ -75,7 +75,7 @@ typedef void(^animationBlock)(void);
 /**
  *  箭头在需要提示窗的位置
  */
-@property (nonatomic, assign) LKPopoverPositionType positionType;
+@property (nonatomic, assign, readonly) LKPopoverPositionType positionType;
 /**
  * 提示窗下面的半透明灰色遮罩。 如果你需要它,touch它提示窗就会消失,否则他event(userInterfaceEnabled)就会No
  */
