@@ -7,6 +7,7 @@
 //
 
 #import "LKPopover.h"
+#define RADIANS(degrees) ((3.14159265359 * degrees) / 180)
 
 @interface LKPopover()
 
@@ -80,15 +81,17 @@
 }
 
 - (void)propertyInit{
-    self.arrowSize = CGSizeMake(10, 10);
+    self.arrowSize = CGSizeMake(11, 10);
     self.animationShow = 0.5f;
     self.animationDismss = 0.5f;
     self.betweenAtViewAndArrowHeight = 3.0f;
-    self.sideEdge = 4.0f;
+    self.sideEdge = 8.0f;
     self.cornerRadius = 6.0f;
     self.animationSpring = YES;
     self.maskType = LKPopoverMaskTypeGray;
     self.applyShadow = YES;
+    self.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor{
@@ -98,18 +101,135 @@
 }
 
 - (void)setUp{
-    CGRect contentFrame = self.contentViewFrame;
+    CGRect frame = self.contentViewFrame;
     
+    CGFloat frameMidx = self.arrowShowPoint.x - CGRectGetWidth(frame) * 0.5;
+    frame.origin.x = frameMidx;
     
+    CGFloat sideEdge = 0.0;
+    if (CGRectGetWidth(frame) < CGRectGetWidth(self.containerView.frame)) {
+        sideEdge = self.sideEdge;
+    }
     
+    CGFloat outerSideEdge = CGRectGetMaxX(frame) - CGRectGetWidth(self.containerView.bounds);
+    if (outerSideEdge > 0) {
+        frame.origin.x -= (outerSideEdge + sideEdge);
+    } else {
+        if (CGRectGetMinX(frame) < 0) {
+            frame.origin.x += ABS(CGRectGetMinX(frame)) + sideEdge;
+        }
+    }
     
+    self.frame = frame;
     
+    CGPoint arrowPoint = [self.containerView convertPoint:self.arrowShowPoint toView:self];
     
+    CGPoint anchorPoint;
+    switch (self.positionType) {
+        case LKPopoverPositionTypeDown: {
+            frame.origin.y = self.arrowShowPoint.y;
+            anchorPoint = CGPointMake(arrowPoint.x / CGRectGetWidth(frame), 0);
+        } break;
+        case LKPopoverPositionTypeUp: {
+            frame.origin.y = self.arrowShowPoint.y - CGRectGetHeight(frame) - self.arrowSize.height;
+            anchorPoint = CGPointMake(arrowPoint.x / CGRectGetWidth(frame), 1);
+        } break;
+    }
     
+    CGPoint lastAnchor = self.layer.anchorPoint;
+    self.layer.anchorPoint = anchorPoint;
+    self.layer.position = CGPointMake(
+                                      self.layer.position.x + (anchorPoint.x - lastAnchor.x) * self.layer.bounds.size.width,
+                                      self.layer.position.y + (anchorPoint.y - lastAnchor.y) * self.layer.bounds.size.height);
     
-    
+    frame.size.height += self.arrowSize.height;
+    self.frame = frame;
 }
-
+- (void)drawRect:(CGRect)rect {
+    //绘制箭头和背景视图
+    UIBezierPath *arrow = [[UIBezierPath alloc] init];
+    UIColor *contentColor = self.contentColor;
+    CGPoint arrowPoint = [self.containerView convertPoint:self.arrowShowPoint toView:self];
+    CGSize arrowSize = self.arrowSize;
+    CGFloat cornerRadius = self.cornerRadius;
+    CGSize size = self.bounds.size;
+    
+    switch (self.positionType) {
+        case LKPopoverPositionTypeDown: {
+            //箭头^
+            [arrow moveToPoint:CGPointMake(arrowPoint.x, 0)];
+            [arrow
+             addLineToPoint:CGPointMake(arrowPoint.x + arrowSize.width * 0.5, arrowSize.height)];
+            [arrow addLineToPoint:CGPointMake(size.width - cornerRadius, arrowSize.height)];
+            //箭头绘制完毕
+            
+            //绘制弧度
+            [arrow addArcWithCenter:CGPointMake(size.width - cornerRadius,
+                                                arrowSize.height + cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(270.0)
+                           endAngle:RADIANS(0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(size.width, size.height - cornerRadius)];
+            [arrow
+             addArcWithCenter:CGPointMake(size.width - cornerRadius, size.height - cornerRadius)
+             radius:cornerRadius
+             startAngle:RADIANS(0)
+             endAngle:RADIANS(90.0)
+             clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(0, size.height)];
+            [arrow addArcWithCenter:CGPointMake(cornerRadius, size.height - cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(90)
+                           endAngle:RADIANS(180.0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(0, arrowSize.height + cornerRadius)];
+            [arrow addArcWithCenter:CGPointMake(cornerRadius, arrowSize.height + cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(180.0)
+                           endAngle:RADIANS(270)
+                          clockwise:YES];
+            [arrow
+             addLineToPoint:CGPointMake(arrowPoint.x - arrowSize.width * 0.5, arrowSize.height)];
+        } break;
+        case LKPopoverPositionTypeUp: {
+            [arrow moveToPoint:CGPointMake(arrowPoint.x, size.height)];
+            [arrow addLineToPoint:CGPointMake(arrowPoint.x - arrowSize.width * 0.5,
+                                              size.height - arrowSize.height)];
+            [arrow addLineToPoint:CGPointMake(cornerRadius, size.height - arrowSize.height)];
+            [arrow addArcWithCenter:CGPointMake(cornerRadius,
+                                                size.height - arrowSize.height - cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(90.0)
+                           endAngle:RADIANS(180.0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(0, cornerRadius)];
+            [arrow addArcWithCenter:CGPointMake(cornerRadius, cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(180.0)
+                           endAngle:RADIANS(270.0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(size.width - cornerRadius, 0)];
+            [arrow addArcWithCenter:CGPointMake(size.width - cornerRadius, cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(270.0)
+                           endAngle:RADIANS(0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(size.width,
+                                              size.height - arrowSize.height - cornerRadius)];
+            [arrow addArcWithCenter:CGPointMake(size.width - cornerRadius,
+                                                size.height - arrowSize.height - cornerRadius)
+                             radius:cornerRadius
+                         startAngle:RADIANS(0)
+                           endAngle:RADIANS(90.0)
+                          clockwise:YES];
+            [arrow addLineToPoint:CGPointMake(arrowPoint.x + arrowSize.width * 0.5,
+                                              size.height - arrowSize.height)];
+        } break;
+    }
+    [contentColor setFill];
+    [arrow fill];
+}
 
 #pragma mark -----外部方法调用----
 /**
@@ -199,6 +319,8 @@
     [self addSubview:self.contentView];
     [self.containerView addSubview:self];
     
+    
+    self.transform = CGAffineTransformMakeScale(0.0, 0.0);
     if (self.animationSpring && self.isIOS7) {
         [UIView animateWithDuration:self.animationShow
                               delay:0
@@ -251,5 +373,6 @@
                          }];
     }
 }
+
 
 @end

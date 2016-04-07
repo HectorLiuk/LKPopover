@@ -11,8 +11,6 @@
 typedef NS_ENUM(NSInteger, LKPopoverPositionType) {
     LKPopoverPositionTypeUp = 1,//箭头在content上面
     LKPopoverPositionTypeDown,
-    LKPopoverPositionTypeLeft,
-    LKPopoverPositionTypeRight,
 };
 typedef NS_ENUM(NSUInteger, LKPopoverMaskType) {
     LKPopoverMaskTypeGray = 1,//有蒙版效果,支持touch视图消失
@@ -45,7 +43,7 @@ typedef void(^animationBlock)(void);
  */
 @property (nonatomic, assign) CGFloat animationDismss;
 /**
- *  用来控制具体屏幕边缘距离 默认4.0f
+ *  用来控制具体屏幕边缘距离 默认8.0f
  */
 @property (nonatomic, assign) CGFloat sideEdge;
 /**
@@ -80,5 +78,30 @@ typedef void(^animationBlock)(void);
  * 提示窗下面的半透明灰色遮罩。 如果你需要它,touch它提示窗就会消失,否则他event(userInterfaceEnabled)就会No
  */
 @property (nonatomic, strong, readonly) UIControl *grayOverlay;
+
+
+
+
+/**
+ *  提示窗显示
+ *
+ *  @param point         箭头位置
+ *  @param position      箭头方向
+ *  @param contentView   需要显示的视图
+ *  @param containerView 置于哪个视图之上
+ */
+- (void)showAtPoint:(CGPoint)point
+     popoverPostion:(LKPopoverPositionType)position
+    withContentView:(UIView *)contentView
+             inView:(UIView *)containerView;
+/**
+ *  显示
+ */
+- (void)show;
+/**
+ *  提示窗消失
+ */
+- (void)dismiss;
+
 
 @end
