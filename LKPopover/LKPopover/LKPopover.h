@@ -78,12 +78,8 @@ typedef void(^animationBlock)(void);
  * 提示窗下面的半透明灰色遮罩。 如果你需要它,touch它提示窗就会消失,否则他event(userInterfaceEnabled)就会No
  */
 @property (nonatomic, strong, readonly) UIControl *grayOverlay;
-
-
-
-
 /**
- *  提示窗显示
+ *  提示窗显示 箭头位置需要直接去设置
  *
  *  @param point         箭头位置
  *  @param position      箭头方向
@@ -94,6 +90,19 @@ typedef void(^animationBlock)(void);
      popoverPostion:(LKPopoverPositionType)position
     withContentView:(UIView *)contentView
              inView:(UIView *)containerView;
+/**
+ *  方便的视图显示   箭头居于atView中间
+ *
+ *  @param atView        触发点击视图
+ *  @param position      箭头方向
+ *  @param contentView   提示窗内容
+ *  @param containerView 位于哪个遮罩视图
+ */
+- (void)showAtView:(UIView *)atView
+    popoverPostion:(LKPopoverPositionType)position
+   withContentView:(UIView *)contentView
+            inView:(UIView *)containerView;
+
 /**
  *  显示
  */

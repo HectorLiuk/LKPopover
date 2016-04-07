@@ -136,12 +136,13 @@
         } break;
     }
     
+    //控制动画出现 消失位置   默认是以箭头位置为动画起点和消失点
     CGPoint lastAnchor = self.layer.anchorPoint;
     self.layer.anchorPoint = anchorPoint;
     self.layer.position = CGPointMake(
                                       self.layer.position.x + (anchorPoint.x - lastAnchor.x) * self.layer.bounds.size.width,
                                       self.layer.position.y + (anchorPoint.y - lastAnchor.y) * self.layer.bounds.size.height);
-    
+
     frame.size.height += self.arrowSize.height;
     self.frame = frame;
 }
@@ -156,7 +157,7 @@
     
     switch (self.positionType) {
         case LKPopoverPositionTypeDown: {
-            //箭头^
+            //绘制箭头^ 从左边开始
             [arrow moveToPoint:CGPointMake(arrowPoint.x, 0)];
             [arrow
              addLineToPoint:CGPointMake(arrowPoint.x + arrowSize.width * 0.5, arrowSize.height)];
@@ -233,7 +234,7 @@
 
 #pragma mark -----外部方法调用----
 /**
- *  提示窗显示
+ *  灵活的视图显示 箭头位置直接确定
  *
  *  @param point         箭头位置
  *  @param position      箭头方向
@@ -298,6 +299,78 @@
     [self show];
     
 }
+/**
+ *  方便的视图显示   箭头居于atView中间
+ *
+ *  @param atView        触发点击视图
+ *  @param position      箭头方向
+ *  @param contentView   提示窗内容
+ *  @param containerView 位于哪个遮罩视图
+ */
+- (void)showAtView:(UIView *)atView
+    popoverPostion:(LKPopoverPositionType)position
+   withContentView:(UIView *)contentView
+            inView:(UIView *)containerView{
+    CGFloat betweenArrowAndAtView = self.betweenAtViewAndArrowHeight;
+    CGFloat contentViewHeight = CGRectGetHeight(contentView.bounds);
+    CGRect atViewFrame = [containerView convertRect:atView.frame toView:containerView];
+    
+    
+    BOOL upCanContain = CGRectGetMinY(atViewFrame) >= contentViewHeight + betweenArrowAndAtView;//小于说明超过距离屏幕边缘（弹窗超出屏幕）所以要转换箭头位置
+    BOOL downCanContain =
+    (CGRectGetHeight(containerView.bounds) -
+     (CGRectGetMaxY(atViewFrame) + betweenArrowAndAtView)) >= contentViewHeight;
+
+    
+    NSAssert((upCanContain || downCanContain),@"LKPopover 没有空间不能被展示出来"
+             );
+    
+    CGPoint atPoint = CGPointMake(CGRectGetMidX(atViewFrame), 0);
+    
+    LKPopoverPositionType popoverPosition;
+    if (upCanContain) {
+        popoverPosition = LKPopoverPositionTypeUp;
+        atPoint.y = CGRectGetMinY(atViewFrame) - betweenArrowAndAtView;
+    } else {
+        popoverPosition = LKPopoverPositionTypeDown;
+        atPoint.y = CGRectGetMaxY(atViewFrame) + betweenArrowAndAtView;
+    }
+    
+    if (upCanContain && downCanContain) {
+        CGFloat upHeight = CGRectGetMinY(atViewFrame);
+        CGFloat downHeight = CGRectGetHeight(containerView.bounds) - CGRectGetMaxY(atViewFrame);
+        BOOL useUp = upHeight > downHeight;
+        
+        if (position != 0) {
+            useUp = position == LKPopoverPositionTypeUp ? YES : NO;
+        }
+        if (useUp) {
+            popoverPosition = LKPopoverPositionTypeUp;
+            atPoint.y = CGRectGetMinY(atViewFrame) - betweenArrowAndAtView;
+        } else {
+            popoverPosition = LKPopoverPositionTypeDown;
+            atPoint.y = CGRectGetMaxY(atViewFrame) + betweenArrowAndAtView;
+        }
+    }
+    
+    [self showAtPoint:atPoint popoverPostion:popoverPosition withContentView:contentView inView:containerView];
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
 /**
  *  显示
  */
