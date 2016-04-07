@@ -231,7 +231,6 @@
     [contentColor setFill];
     [arrow fill];
 }
-
 #pragma mark -----外部方法调用----
 /**
  *  灵活的视图显示 箭头位置直接确定
@@ -354,23 +353,7 @@
     }
     
     [self showAtPoint:atPoint popoverPostion:popoverPosition withContentView:contentView inView:containerView];
-    
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
 /**
  *  显示
  */

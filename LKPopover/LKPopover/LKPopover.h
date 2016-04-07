@@ -102,7 +102,6 @@ typedef void(^animationBlock)(void);
     popoverPostion:(LKPopoverPositionType)position
    withContentView:(UIView *)contentView
             inView:(UIView *)containerView;
-
 /**
  *  显示
  */
