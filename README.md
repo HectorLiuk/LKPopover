@@ -6,16 +6,23 @@ First, he is a lightweight popover, it is flexible. Of course, it is very conven
 首先他是一个轻量级的popover,它是灵活的。当然它的使用是非常方便的只需要一步就可以使用它，同时它的功能也非常强大，它就好比是一个容器把需要的内容添加进去就可以显示出来。
 
 
-###Demo 
+##Demo 
 <img src="https://raw.github.com/HetorLiuk/LKPopover/master/demo.gif" width="500"><br/>
+Download to try it.
 
-###Support 
+##Support 
 iOS ~> 6.0
 
-###Usage
+##Usage
+writing
 
 
-###ToDo
+
+##ToDo
 1. API
 2. Demo
 3. test
+4. support CocoaPods
+
+Please tell me problem :544523550@qq.com  | lkSnail93@gmail.com
+
