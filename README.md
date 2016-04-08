@@ -7,7 +7,7 @@ First, he is a lightweight popover, it is flexible. Of course, it is very conven
 
 
 ##Demo 
-<img src="https://raw.github.com/HetorLiuk/LKPopover/master/demo.gif" width="500"><br/>
+<img src="https://raw.github.com/544523660/LKPopover/master/demo.gif" width="500"><br/>
 Download to try it.
 
 ##Support 
