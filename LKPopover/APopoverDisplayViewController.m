@@ -51,11 +51,6 @@
     self.navigationItem.titleView = titleLb;
     
     
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"tap me"
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(rightPopover)];
     
 
     
@@ -72,21 +67,22 @@
     [self.lkPopover showAtPoint:startPoint
                popoverPostion:LKPopoverPositionTypeDown
               withContentView:self.tableView
-                       inView:self.navigationController.view];
+                       inView:self.tabBarController.view];
     __weak typeof (self) weakSelf = self;
     self.lkPopover.didDismssHandler = ^{
         [weakSelf bounceTargetView:titleView];
     };
     
 }
-- (void)rightPopover{
-    CGPoint startPoint =
-    CGPointMake(self.view.frame.size.width-30, 70);
-    [self.lkPopover showAtPoint:startPoint
-                 popoverPostion:LKPopoverPositionTypeDown
-                withContentView:self.tableView
-                         inView:self.navigationController.view];
+- (IBAction)bottomBtn:(id)sender {
+    [self.lkPopover showAtView:sender withContentView:self.tableView];
+    __weak typeof (self) weakSelf = self;
+    self.lkPopover.didDismssHandler = ^{
+        [weakSelf bounceTargetView:sender];
+    };
+
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

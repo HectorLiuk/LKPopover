@@ -375,7 +375,7 @@
 - (void)showAtView:(UIView *)atView withContentView:(UIView *)contentView {
     [self showAtView:atView
      withContentView:contentView
-              inView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+              inView:[UIApplication sharedApplication].keyWindow];
 }
 /**
  *  显示
