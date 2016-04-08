@@ -6,6 +6,10 @@
 //  Copyright © 2016年 LK. All rights reserved.
 //
 
+
+//LKPopover是一个简单高效的弹窗，它的使用时很方便的。提高的方法和属性也是蛮多的,更多的功能需要去尝试。
+//The code of the road, coding the fun of practice in action.
+//
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, LKPopoverPositionType) {
@@ -21,7 +25,6 @@ typedef void(^animationBlock)(void);
 @interface LKPopover : UIView
 
 + (instancetype)popover;
-
 /**
  *  提示窗内容位置内边距,默认是zero;
  */
@@ -79,7 +82,7 @@ typedef void(^animationBlock)(void);
  */
 @property (nonatomic, strong, readonly) UIControl *grayOverlay;
 /**
- *  提示窗显示 箭头位置需要直接去设置
+ *  提示窗显示 箭头锚点位置需要自己去设置 (此方法为最核心方法，去试试用用他，更多的便捷功能编写他吧)
  *
  *  @param point         箭头位置
  *  @param position      箭头方向
@@ -91,7 +94,7 @@ typedef void(^animationBlock)(void);
     withContentView:(UIView *)contentView
              inView:(UIView *)containerView;
 /**
- *  方便的视图显示   箭头居于atView中间
+ *  方便的视图显示   默认箭头居于atView中间
  *
  *  @param atView        触发点击视图
  *  @param position      箭头方向
@@ -103,6 +106,23 @@ typedef void(^animationBlock)(void);
    withContentView:(UIView *)contentView
             inView:(UIView *)containerView;
 /**
+ *  方便的视图展示 自动判断视图展示方向
+ *
+ *  @param atView        触发点击视图
+ *  @param contentView   内容视图
+ *  @param containerView 在哪个视图之上
+ */
+- (void)showAtView:(UIView *)atView
+   withContentView:(UIView *)contentView
+            inView:(UIView *)containerView;
+/**
+ *  默认在window视图上展示
+ *
+ *  @param atView 触发点击视图
+ *  @param contentView 内容视图
+ */
+- (void)showAtView:(UIView *)atView withContentView:(UIView *)contentView;
+/**
  *  显示
  */
 - (void)show;
@@ -110,6 +130,4 @@ typedef void(^animationBlock)(void);
  *  提示窗消失
  */
 - (void)dismiss;
-
-
 @end

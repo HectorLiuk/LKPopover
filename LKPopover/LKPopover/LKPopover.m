@@ -355,6 +355,29 @@
     [self showAtPoint:atPoint popoverPostion:popoverPosition withContentView:contentView inView:containerView];
 }
 /**
+ *  方便时视图展示 自动判断视图展示方向
+ *
+ *  @param atView        触发点击视图
+ *  @param contentView   内容视图
+ *  @param containerView 在哪个视图之上
+ */
+- (void)showAtView:(UIView *)atView
+   withContentView:(UIView *)contentView
+            inView:(UIView *)containerView {
+    [self showAtView:atView popoverPostion:0 withContentView:contentView inView:containerView];
+}
+/**
+ *  默认在window视图上展示
+ *
+ *  @param atView 触发点击视图
+ *  @param contentView 内容视图
+ */
+- (void)showAtView:(UIView *)atView withContentView:(UIView *)contentView {
+    [self showAtView:atView
+     withContentView:contentView
+              inView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+}
+/**
  *  显示
  */
 - (void)show{
