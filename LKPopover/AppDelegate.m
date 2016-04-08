@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewsViewController.h"
+#import "APopoverDisplayViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +17,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    
+    ViewsViewController *viewsVC = [[ViewsViewController alloc] initWithNibName:@"ViewsViewController" bundle:nil];
+    APopoverDisplayViewController *popVC = [[APopoverDisplayViewController alloc] initWithNibName:@"APopoverDisplayViewController" bundle:nil];
+    
+    viewsVC.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0];
+    popVC.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
+    tab.viewControllers = @[viewsVC,[[UINavigationController alloc] initWithRootViewController:popVC]];
+
+    
+    self.window.rootViewController = tab;
+    
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+
+    
+    
+    
     return YES;
 }
 

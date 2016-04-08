@@ -84,7 +84,7 @@
     self.arrowSize = CGSizeMake(11, 10);
     self.animationShow = 0.5f;
     self.animationDismss = 0.5f;
-    self.betweenAtViewAndArrowHeight = 3.0f;
+    self.betweenAtViewAndArrowHeight = 10.0f;
     self.sideEdge = 8.0f;
     self.cornerRadius = 6.0f;
     self.animationSpring = YES;

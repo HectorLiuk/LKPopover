@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  ViewsViewController.h
 //  LKPopover
 //
-//  Created by lk on 16/3/29.
+//  Created by lk on 16/4/8.
 //  Copyright © 2016年 LK. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewsViewController : UIViewController
 
 @end
-
