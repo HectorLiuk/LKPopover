@@ -14,14 +14,50 @@ Download to try it.
 iOS ~> 6.0
 
 ##Usage
-writing
+API的描述非常详细，你可以很方便的使用,你可以详细的去阅读当然你也可以提出问题到Issues。
+
+##Attention
+1. 请设置好你显示视图的大小。
+2. 懒显示可以自动判断显示的箭头方向。
+
+##eg
+```objc
+UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+image.image = [UIImage imageNamed:@"222"];
+LKPopover *popover = [LKPopover popover];
+[popover showAtView:sender withContentView:image];
+```
+```objc
+UIButton *btn = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(100, 40)}];
+[btn setTitle:@"I an btn" forState:UIControlStateNormal];
+btn.backgroundColor = [UIColor redColor];
+LKPopover *lk = [LKPopover popover];
+CGPoint point = CGPointMake(CGRectGetMidX(senderBtn.frame), CGRectGetMidY(senderBtn.frame));
+[lk showAtPoint:point popoverPostion:LKPopoverPositionTypeUp withContentView:btn inView:self.view];
+```
+```objc
+UIView *titleView = self.navigationItem.titleView;
+CGPoint startPoint =
+CGPointMake(CGRectGetMidX(titleView.frame), CGRectGetMaxY(titleView.frame) + 20);
+self.lkPopover.backgroundColor = [UIColor redColor];
+self.lkPopover.contentInset = UIEdgeInsetsMake(5, 10, 5, 10);
+self.lkPopover.maskType = LKPopoverMaskTypeNone;
+[self.lkPopover showAtPoint:startPoint
+popoverPostion:LKPopoverPositionTypeDown
+withContentView:self.tableView
+inView:self.tabBarController.view];
+__weak typeof (self) weakSelf = self;
+self.lkPopover.didDismssHandler = ^{
+[weakSelf bounceTargetView:titleView];
+};
+```
 
 
 
 ##ToDo
-1. API
-2. Demo
-3. test
+_1. API_
+_2. Demo_
+_3. test_
 4. support CocoaPods
 
 Please tell me problem :544523550@qq.com  | lkSnail93@gmail.com
