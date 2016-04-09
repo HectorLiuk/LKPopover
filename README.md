@@ -55,9 +55,9 @@ self.lkPopover.didDismssHandler = ^{
 
 
 ##ToDo
-_1. API_
-_2. Demo_
-_3. test_
+//1. API
+//2. Demo
+//3. test
 4. support CocoaPods
 
 Please tell me problem :544523550@qq.com  | lkSnail93@gmail.com
