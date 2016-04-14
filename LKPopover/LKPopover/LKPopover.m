@@ -64,6 +64,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     //CGRectZero 1>设计时考虑到根据显示的内容尺度画出mask
     //           2>设置CGRectZero 创建时不会调用drawRect,保证设置属性有效果,也有点考虑性能防止反复绘制
+    //           3>先判断箭头位置和容器大小，在绘制容器
     if (self = [super initWithFrame:CGRectZero]) {
         [self propertyInit];
     }
