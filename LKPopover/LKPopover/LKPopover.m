@@ -166,30 +166,35 @@
             //箭头绘制完毕
             
             //绘制弧度
+            /*
+             param: ArcCenter 圆心  radius 半径 startAngle/endAngle 开始结束角度 clockwise 是否闭合曲线
+             角度问题见该项目目录的图
+             */
+            //画曲线  0代表起点（0右边开始） M_PI代表（180）  画圆逆时针绘制(在绘制时候看成从结束到开始)
             [arrow addArcWithCenter:CGPointMake(size.width - cornerRadius,
                                                 arrowSize.height + cornerRadius)
                              radius:cornerRadius
-                         startAngle:RADIANS(270.0)
-                           endAngle:RADIANS(0)
+                         startAngle:M_PI_2*3
+                           endAngle:M_PI
                           clockwise:YES];
             [arrow addLineToPoint:CGPointMake(size.width, size.height - cornerRadius)];
             [arrow
              addArcWithCenter:CGPointMake(size.width - cornerRadius, size.height - cornerRadius)
              radius:cornerRadius
-             startAngle:RADIANS(0)
-             endAngle:RADIANS(90.0)
+             startAngle:M_PI
+             endAngle:M_PI_2
              clockwise:YES];
             [arrow addLineToPoint:CGPointMake(0, size.height)];
             [arrow addArcWithCenter:CGPointMake(cornerRadius, size.height - cornerRadius)
                              radius:cornerRadius
-                         startAngle:RADIANS(90)
-                           endAngle:RADIANS(180.0)
+                         startAngle:M_PI_2
+                           endAngle:0
                           clockwise:YES];
             [arrow addLineToPoint:CGPointMake(0, arrowSize.height + cornerRadius)];
             [arrow addArcWithCenter:CGPointMake(cornerRadius, arrowSize.height + cornerRadius)
                              radius:cornerRadius
-                         startAngle:RADIANS(180.0)
-                           endAngle:RADIANS(270)
+                         startAngle:0
+                           endAngle:M_PI_2*3
                           clockwise:YES];
             [arrow
              addLineToPoint:CGPointMake(arrowPoint.x - arrowSize.width * 0.5, arrowSize.height)];
