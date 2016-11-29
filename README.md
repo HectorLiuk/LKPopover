@@ -11,7 +11,15 @@ First, he is a lightweight popover, it is flexible. Of course, it is very conven
 Download to try it.
 
 ##Support 
-iOS ~> 6.0
+iOS ~> 7.0
+
+##Podfile
+platform :ios, '7.0'
+
+target 'TargetName' do
+pod 'LKPopover', '~> 1.0.0'
+end
+
 
 ##Usage
 API的描述非常详细，你可以很方便的使用,可以详细的去阅读当然你也可以提出问题到Issues。
@@ -53,13 +61,6 @@ self.lkPopover.didDismssHandler = ^{
 };
 ```
 
-
-
-##ToDo
-1. //API
-2. //Demo
-3. //test
-4. **support CocoaPods**
 
 Please tell me problem :lkSnail93@gmail.com
 
